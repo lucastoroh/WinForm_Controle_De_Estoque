@@ -57,13 +57,13 @@
 			this.btnFechar = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.txtPar2 = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
 			this.txtPar1 = new System.Windows.Forms.TextBox();
+			this.cmbColuna = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
+			this.cmbBuscar = new System.Windows.Forms.ComboBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.cmbBuscar = new System.Windows.Forms.ComboBox();
-			this.cmbColuna = new System.Windows.Forms.ComboBox();
 			this.panel1.SuspendLayout();
 			this.TabControl.SuspendLayout();
 			this.TabPageLista.SuspendLayout();
@@ -328,12 +328,29 @@
 			this.txtPar2.Size = new System.Drawing.Size(100, 20);
 			this.txtPar2.TabIndex = 21;
 			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(6, 16);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(40, 13);
+			this.label3.TabIndex = 16;
+			this.label3.Text = "Coluna";
+			// 
 			// txtPar1
 			// 
 			this.txtPar1.Location = new System.Drawing.Point(369, 33);
 			this.txtPar1.Name = "txtPar1";
 			this.txtPar1.Size = new System.Drawing.Size(100, 20);
 			this.txtPar1.TabIndex = 20;
+			// 
+			// cmbColuna
+			// 
+			this.cmbColuna.FormattingEnabled = true;
+			this.cmbColuna.Location = new System.Drawing.Point(9, 32);
+			this.cmbColuna.Name = "cmbColuna";
+			this.cmbColuna.Size = new System.Drawing.Size(140, 21);
+			this.cmbColuna.TabIndex = 14;
 			// 
 			// label6
 			// 
@@ -343,6 +360,14 @@
 			this.label6.Size = new System.Drawing.Size(64, 13);
 			this.label6.TabIndex = 19;
 			this.label6.Text = "Parâmetro 1";
+			// 
+			// cmbBuscar
+			// 
+			this.cmbBuscar.FormattingEnabled = true;
+			this.cmbBuscar.Location = new System.Drawing.Point(158, 32);
+			this.cmbBuscar.Name = "cmbBuscar";
+			this.cmbBuscar.Size = new System.Drawing.Size(140, 21);
+			this.cmbBuscar.TabIndex = 15;
 			// 
 			// label5
 			// 
@@ -362,31 +387,6 @@
 			this.label4.TabIndex = 17;
 			this.label4.Text = "Buscar";
 			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(6, 16);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(40, 13);
-			this.label3.TabIndex = 16;
-			this.label3.Text = "Coluna";
-			// 
-			// cmbBuscar
-			// 
-			this.cmbBuscar.FormattingEnabled = true;
-			this.cmbBuscar.Location = new System.Drawing.Point(158, 32);
-			this.cmbBuscar.Name = "cmbBuscar";
-			this.cmbBuscar.Size = new System.Drawing.Size(140, 21);
-			this.cmbBuscar.TabIndex = 15;
-			// 
-			// cmbColuna
-			// 
-			this.cmbColuna.FormattingEnabled = true;
-			this.cmbColuna.Location = new System.Drawing.Point(9, 32);
-			this.cmbColuna.Name = "cmbColuna";
-			this.cmbColuna.Size = new System.Drawing.Size(140, 21);
-			this.cmbColuna.TabIndex = 14;
-			// 
 			// frmBase
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -401,6 +401,7 @@
 			this.Controls.Add(this.panel1);
 			this.Name = "frmBase";
 			this.Text = "frmBase";
+			this.Load += new System.EventHandler(this.frmBase_Load);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmBase_KeyDown);
 			this.panel1.ResumeLayout(false);
 			this.TabControl.ResumeLayout(false);

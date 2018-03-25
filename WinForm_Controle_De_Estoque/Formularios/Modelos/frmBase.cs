@@ -162,7 +162,14 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
 			{
 				MessageBox.Show("O registro não foi salvo, por favor verifique os erros!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 			}
-			TabControl.SelectedTab(0);
+			TabControl.SelectTab(0);
+		}
+
+		private void frmBase_Load(object sender, EventArgs e)
+		{
+			lblModo.Text = "Consultando";
+			sStatus = StatusCadastro.scConsultando;
+			Atualiza_Grid();
 		}
 
 	}
