@@ -172,5 +172,19 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
 			Atualiza_Grid();
 		}
 
+		private void btnExcluir_Click(object sender, EventArgs e)
+		{
+			if (MessageBox.Show("Confirma Exclusão?", "Excluindo...", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)==DialogResult.Yes)
+				if (Excluir())
+				{
+					sStatus = StatusCadastro.scConsultando;
+					//MessageBox.Show("Registro excluido com sucesso", "Aviso do sistema")
+					Atualiza_Grid();
+				}
+				else
+				{
+
+				}
+		}
 	}
 }
