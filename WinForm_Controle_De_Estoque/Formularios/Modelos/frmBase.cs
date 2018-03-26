@@ -183,8 +183,68 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
 				}
 				else
 				{
-
+					MessageBox.Show("O registro não foi excluído, por favor verifique os erros!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
+		}
+
+		private void btnPesquisar_Click(object sender, EventArgs e)
+		{
+			string vFiltro = "", vOperacao = "=", vCampo = "";
+			if (cmbBuscar.Text == "Todos")
+				cmbColuna.SelectedIndex = -1;
+			else if (cmbColuna.SelectedIndex == -1 || cmbBuscar.SelectedIndex == -1)
+			{
+				MessageBox.Show("Informe os parâmetros corretamente");
+				return;
+			}
+			//Definindo a operação
+			if (cmbBuscar.Text == "Igual a")
+				vOperacao = " = ";
+			else if (cmbBuscar.Text == "Maior que")
+				vOperacao = " > ";
+			else if (cmbBuscar.Text == "Menor que")
+				vOperacao = " < ";
+			else if (cmbBuscar.Text == "Maior ou igual a")
+				vOperacao = " >= ";
+			else if (cmbBuscar.Text == "Menor ou igual a")
+				vOperacao = " <= ";
+			else if (cmbBuscar.Text == "Diferente de")
+				vOperacao = " <> ";
+			//Elimina apóstrofos caso existam
+			txtPar1.Text = txtPar1.Text.Replace("'", "'");
+			txtPar2.Text = txtPar2.Text.Replace("'", "'");
+			if (cmbBuscar.Text == "Todos")
+				vFiltro = "";
+			else
+			{
+				vCampo = cmbColuna.Text;
+				vFiltro = vCampo;
+				if (dtGenerico.Columns[cmbColuna.SelectedIndex].DataType.Name == "String")
+				{
+					if (cmbBuscar.Text == "Que começa com")
+						vFiltro = vFiltro + " like '" + txtPar1.Text + "%'";
+					else if (cmbBuscar.Text == "Que contém")
+						vFiltro = vFiltro + " like '%" + txtPar1.Text + "%'";
+					else
+						vFiltro = vFiltro + vOperacao + "''" + txtPar1.Text + "''";
+				}
+				else if (dtGenerico.Columns[cmbColuna.SelectedIndex].DataType.Name == "Int32")
+				{
+					if (cmbBuscar.Text == "Que esteja entre")
+						vFiltro = vFiltro + ">=" + txtPar1.Text + " and " + vCampo + "<=" + txtPar2.Text;
+					else
+						vFiltro = vFiltro + vOperacao + txtPar1.Text;
+				}
+				else if (dtGenerico.Columns[cmbColuna.SelectedIndex].DataType.Name == "DateTime")
+				{
+					if (cmbBuscar.Text == "Que esteja entre")
+						vFiltro = vFiltro + ">=" + txtPar1.Text + " and " + vCampo + " <= " + txtPar2.Text + "''";
+					else
+						vFiltro = vFiltro + vOperacao + "''" + txtPar1.Text + "''";
+				}
+			}
+			dataSetDadosDoBancoBindingSouce.RemoveFilter();
+			dataSetDadosDoBancoBindingSouce.Filter = vFiltro;
 		}
 	}
 }
