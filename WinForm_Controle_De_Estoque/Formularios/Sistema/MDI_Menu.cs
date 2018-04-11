@@ -20,7 +20,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Sistema
 		private void MDI_Menu_Load(object sender, EventArgs e)
 		{
 			staUsuario.Text = DateTime.Now.ToShortDateString();
-			staUsuario.Text = "Usuário atual: " + Properties.Settings.Default.NomeUsuarioLogado;
+			//staUsuario.Text = "Usuário atual: " + Properties.Settings.Default.NomeUsuarioLogado;
 			Checa_Teclas();
 		}
 
@@ -66,5 +66,13 @@ namespace WinForm_Controle_De_Estoque.Formularios.Sistema
 			else
 				Application.ExitThread();
 		}
+
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			staHora.Text = DateTime.Now.ToShortTimeString();
+		}
+
+
+
 	}
 }

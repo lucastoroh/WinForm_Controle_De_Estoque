@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinForm_Controle_De_Estoque.Formularios.Sistema;
 
 namespace WinForm_Controle_De_Estoque
 {
@@ -16,7 +17,7 @@ namespace WinForm_Controle_De_Estoque
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new SplashScreen());
         }
     }
 }

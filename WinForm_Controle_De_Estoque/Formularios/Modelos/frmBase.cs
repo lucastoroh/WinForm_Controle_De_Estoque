@@ -28,7 +28,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
 		public StatusCadastro sStatus;
 		private void LimpaControles()
 		{
-			foreach(ControlEventArgs ctr in this.groupBox1.Controls)
+			foreach(Control ctr in this.grbPesquisa.Controls)
 			{
 				if(ctr is TextBox)
 					(ctr as TextBox).Text = "";
@@ -89,7 +89,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
 			sStatus = StatusCadastro.scIncluindo;
 			lblModo.Text = "Incluindo";
 			HabilitaDesabilitaControles(true);
-			TabControl.SelectTab(1);
+			tabControl1.SelectTab(1);
 			LimpaControles();
 		}
 
@@ -101,29 +101,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
 			HabilitaDesabilitaControles(true);
 		}
 
-		private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if(TabControl.SelectedIndex == 1)
-			{
-				if(sStatus == StatusCadastro.scIncluindo)
-				{
-					lblModo.Text = "Incluindo";
-					LimpaControles();
-					TabControl.SelectNextControl(groupBox1 = true);
-				}
-				else
-				{
-					lblModo.Text = "Alterando";
-					sStatus = StatusCadastro.scAlterando;
-				}
-			}
-			else
-			{
-				sStatus = StatusCadastro.scConsultando;
-				lblModo.Text = "Consultando";
-			}
-			HabilitaDesabilitaControles(true);
-		}
+		
 
 		private void dgvGrid_DoubleClick(object sender, EventArgs e)
 		{
@@ -132,7 +110,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
 			{
 				nCodGenerico = (int)dgvGrid.CurrentRow.Cells[0].Value;
 			}
-			TabControl.SelectTab(1);
+			tabControl1.SelectTab(1);
 		}
 
 		private void dgvGrid_SelectionChanged(object sender, EventArgs e)
@@ -152,7 +130,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
 				//Quando for inclusão, seleciona a ultima linha do DataGridView
 				if(sStatus == StatusCadastro.scIncluindo)
 				{
-					dataSetDadosDoBancoBindingSource.Position = dataSetDadosDoBancoBindingSouce.Count - 1;
+					//dataSetDadosDoBancoBindingSource.Position = dataSetDadosDoBancoBindingSouce.Count - 1;
 				}
 				sStatus = StatusCadastro.scConsultando;
 				HabilitaDesabilitaControles(false);
@@ -160,9 +138,9 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
 			}
 			else
 			{
-				MessageBox.Show("O registro não foi salvo, por favor verifique os erros!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+				MessageBox.Show("O registro não foi salvo, por favor verifique os erros!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-			TabControl.SelectTab(0);
+			tabControl1.SelectTab(0);
 		}
 
 		private void frmBase_Load(object sender, EventArgs e)
@@ -187,7 +165,86 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
 				}
 		}
 
-		private void btnPesquisar_Click(object sender, EventArgs e)
+
+		private void cmbBuscar_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cmbBuscar.Text == "Todos")
+			{
+				lblPar1.Visible = false;
+				txtPar1.Visible = false;
+				lblPar2.Visible = false;
+				txtPar2.Visible = false;
+				btnPesquisar_Click(sender, e);
+			}
+			else if(cmbBuscar.Text == "Que esteja entre")
+			{
+				lblPar1.Visible = true;
+				txtPar1.Visible = true;
+				txtPar1.Text = "";
+				txtPar1.Focus();
+				lblPar2.Visible = true;
+				txtPar2.Visible = true;
+				txtPar1.Text = "";
+			}
+			else
+			{
+				lblPar1.Visible = true;
+				txtPar1.Visible = true;
+				txtPar1.Text = "";
+				txtPar1.Focus();
+				lblPar2.Visible = false;
+				txtPar2.Visible = false;
+			}
+		}
+
+		private void txtPar1_Validating(object sender, CancelEventArgs e)
+		{
+			if (txtPar1.Text == "")
+			{
+
+				errErro.SetError(txtPar1, "Informe o parâmetro para Pesquisa");
+				e.Cancel = true;
+			}
+		}
+
+		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (tabControl1.SelectedIndex == 1)
+			{
+				if (sStatus == StatusCadastro.scIncluindo)
+				{
+					lblModo.Text = "Incluindo";
+					LimpaControles();
+					// tabControl1.SelectNextControl(grbPesquisa = true);
+				}
+				else
+				{
+					lblModo.Text = "Alterando";
+					sStatus = StatusCadastro.scAlterando;
+				}
+			}
+			else
+			{
+				sStatus = StatusCadastro.scConsultando;
+				lblModo.Text = "Consultando";
+			}
+			HabilitaDesabilitaControles(true);
+		}
+
+		private void txtPar2_Validating(object sender, CancelEventArgs e)
+		{
+			if (txtPar1.Text == "")
+			{
+				errErro.SetError(txtPar2, "Informe o parâmetro para Pesquisa");
+				e.Cancel = true;
+			}
+			else
+			{
+				errErro.SetError(txtPar2, "");
+			}
+		}
+
+		private void btnLocalizar_Click(object sender, EventArgs e)
 		{
 			string vFiltro = "", vOperacao = "=", vCampo = "";
 			if (cmbBuscar.Text == "Todos")
@@ -243,8 +300,32 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
 						vFiltro = vFiltro + vOperacao + "''" + txtPar1.Text + "''";
 				}
 			}
-			dataSetDadosDoBancoBindingSouce.RemoveFilter();
-			dataSetDadosDoBancoBindingSouce.Filter = vFiltro;
+			//dataSetDadosDoBancoBindingSouce.RemoveFilter();
+			//dataSetDadosDoBancoBindingSouce.Filter = vFiltro;
+		}
+
+		private void btnPesquisar_Click(object sender, EventArgs e)
+		{
+			if(grbPesquisa.Visible == true)
+			{
+				this.Height = this.Height - grbPesquisa.Height;
+				grbPesquisa.Visible = false;
+			}
+			else
+			{
+				this.Height = this.Height + grbPesquisa.Height;
+				grbPesquisa.Visible = true;
+				cmbColuna.SelectedIndex = -1;
+				cmbBuscar.SelectedIndex = -1;
+				txtPar1.Text = "1";
+				cmbColuna.Focus();
+				txtPar1.Text = "";
+				lblPar1.Visible = false;
+				txtPar1.Visible = false;
+				lblPar2.Visible = false;
+				lblPar2.Visible = false;
+				tabControl1.SelectTab(0);
+			}
 		}
 	}
 }

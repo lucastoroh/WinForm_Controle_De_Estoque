@@ -62,8 +62,8 @@ namespace WinForm_Controle_De_Estoque.Formularios.Sistema
 				}
 				else
 				{
-					Properties.Settings.Default.NivelUsuarioLogado = 1;
-					Properties.Settings.Default.NivelUsuarioLogado = txtLogin.Text;
+					//Properties.Settings.Default.NivelUsuarioLogado = 1;
+					//Properties.Settings.Default.NivelUsuarioLogado = txtLogin.Text;
 					MDI_Menu frmMenuPrincipal = new MDI_Menu();
 					frmMenuPrincipal.Show();
 					this.Close();

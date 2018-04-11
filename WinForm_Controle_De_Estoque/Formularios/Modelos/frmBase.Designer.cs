@@ -10,7 +10,7 @@
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		/// <Par name="disposing">true if managed resources should be disposed; otherwise, false.</Par>
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing && (components != null))
@@ -35,9 +35,9 @@
 			this.btnExcluir = new System.Windows.Forms.Button();
 			this.btnGravar = new System.Windows.Forms.Button();
 			this.btnIncluir = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
+			this.lblModo = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.TabControl = new System.Windows.Forms.TabControl();
+			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.TabPageLista = new System.Windows.Forms.TabPage();
 			this.dgvGrid = new System.Windows.Forms.DataGridView();
 			this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
@@ -52,26 +52,27 @@
 			this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.tabPageCadastro = new System.Windows.Forms.TabPage();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+			this.errErro = new System.Windows.Forms.ErrorProvider(this.components);
 			this.btnPesquisar = new System.Windows.Forms.Button();
 			this.btnFechar = new System.Windows.Forms.Button();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.grbPesquisa = new System.Windows.Forms.GroupBox();
+			this.btnLocalizar = new System.Windows.Forms.Button();
 			this.txtPar2 = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.txtPar1 = new System.Windows.Forms.TextBox();
 			this.cmbColuna = new System.Windows.Forms.ComboBox();
-			this.label6 = new System.Windows.Forms.Label();
+			this.lblPar1 = new System.Windows.Forms.Label();
 			this.cmbBuscar = new System.Windows.Forms.ComboBox();
-			this.label5 = new System.Windows.Forms.Label();
+			this.lblPar2 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
-			this.TabControl.SuspendLayout();
+			this.tabControl1.SuspendLayout();
 			this.TabPageLista.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvGrid)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
 			this.bindingNavigator1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-			this.groupBox1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.errErro)).BeginInit();
+			this.grbPesquisa.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -80,7 +81,7 @@
 			this.panel1.Controls.Add(this.btnExcluir);
 			this.panel1.Controls.Add(this.btnGravar);
 			this.panel1.Controls.Add(this.btnIncluir);
-			this.panel1.Location = new System.Drawing.Point(414, 12);
+			this.panel1.Location = new System.Drawing.Point(374, 12);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(244, 59);
 			this.panel1.TabIndex = 0;
@@ -125,34 +126,34 @@
 			this.btnIncluir.UseVisualStyleBackColor = true;
 			this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
 			// 
-			// label1
+			// lblModo
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(31, 25);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(34, 13);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "Modo";
+			this.lblModo.AutoSize = true;
+			this.lblModo.Location = new System.Drawing.Point(12, 25);
+			this.lblModo.Name = "lblModo";
+			this.lblModo.Size = new System.Drawing.Size(34, 13);
+			this.lblModo.TabIndex = 1;
+			this.lblModo.Text = "Modo";
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(31, 49);
+			this.label2.Location = new System.Drawing.Point(12, 49);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(86, 13);
 			this.label2.TabIndex = 2;
 			this.label2.Text = "Nome da Tabela";
 			// 
-			// TabControl
+			// tabControl1
 			// 
-			this.TabControl.Controls.Add(this.TabPageLista);
-			this.TabControl.Controls.Add(this.tabPageCadastro);
-			this.TabControl.Location = new System.Drawing.Point(12, 94);
-			this.TabControl.Name = "TabControl";
-			this.TabControl.SelectedIndex = 0;
-			this.TabControl.Size = new System.Drawing.Size(646, 252);
-			this.TabControl.TabIndex = 3;
-			this.TabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_SelectedIndexChanged);
+			this.tabControl1.Controls.Add(this.TabPageLista);
+			this.tabControl1.Controls.Add(this.tabPageCadastro);
+			this.tabControl1.Location = new System.Drawing.Point(12, 94);
+			this.tabControl1.Name = "tabControl1";
+			this.tabControl1.SelectedIndex = 0;
+			this.tabControl1.Size = new System.Drawing.Size(758, 252);
+			this.tabControl1.TabIndex = 3;
+			this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
 			// 
 			// TabPageLista
 			// 
@@ -161,7 +162,7 @@
 			this.TabPageLista.Location = new System.Drawing.Point(4, 22);
 			this.TabPageLista.Name = "TabPageLista";
 			this.TabPageLista.Padding = new System.Windows.Forms.Padding(3);
-			this.TabPageLista.Size = new System.Drawing.Size(638, 226);
+			this.TabPageLista.Size = new System.Drawing.Size(750, 226);
 			this.TabPageLista.TabIndex = 0;
 			this.TabPageLista.Text = "Lista";
 			this.TabPageLista.UseVisualStyleBackColor = true;
@@ -171,7 +172,7 @@
 			this.dgvGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvGrid.Location = new System.Drawing.Point(0, 31);
 			this.dgvGrid.Name = "dgvGrid";
-			this.dgvGrid.Size = new System.Drawing.Size(638, 199);
+			this.dgvGrid.Size = new System.Drawing.Size(750, 199);
 			this.dgvGrid.TabIndex = 1;
 			this.dgvGrid.SelectionChanged += new System.EventHandler(this.dgvGrid_SelectionChanged);
 			this.dgvGrid.DoubleClick += new System.EventHandler(this.dgvGrid_DoubleClick);
@@ -198,7 +199,7 @@
 			this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
 			this.bindingNavigator1.Name = "bindingNavigator1";
 			this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-			this.bindingNavigator1.Size = new System.Drawing.Size(632, 25);
+			this.bindingNavigator1.Size = new System.Drawing.Size(744, 25);
 			this.bindingNavigator1.TabIndex = 0;
 			this.bindingNavigator1.Text = "bindingNavigator1";
 			// 
@@ -274,14 +275,14 @@
 			this.tabPageCadastro.Location = new System.Drawing.Point(4, 22);
 			this.tabPageCadastro.Name = "tabPageCadastro";
 			this.tabPageCadastro.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageCadastro.Size = new System.Drawing.Size(638, 226);
+			this.tabPageCadastro.Size = new System.Drawing.Size(750, 226);
 			this.tabPageCadastro.TabIndex = 1;
 			this.tabPageCadastro.Text = "Cadastro";
 			this.tabPageCadastro.UseVisualStyleBackColor = true;
 			// 
-			// errorProvider1
+			// errErro
 			// 
-			this.errorProvider1.ContainerControl = this;
+			this.errErro.ContainerControl = this;
 			// 
 			// btnPesquisar
 			// 
@@ -299,7 +300,7 @@
 			// 
 			this.btnFechar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.btnFechar.ImageKey = "(nenhum/a)";
-			this.btnFechar.Location = new System.Drawing.Point(513, 352);
+			this.btnFechar.Location = new System.Drawing.Point(621, 352);
 			this.btnFechar.Name = "btnFechar";
 			this.btnFechar.Size = new System.Drawing.Size(145, 23);
 			this.btnFechar.TabIndex = 5;
@@ -307,21 +308,32 @@
 			this.btnFechar.UseVisualStyleBackColor = true;
 			this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
 			// 
-			// groupBox1
+			// grbPesquisa
 			// 
-			this.groupBox1.Controls.Add(this.txtPar2);
-			this.groupBox1.Controls.Add(this.label3);
-			this.groupBox1.Controls.Add(this.txtPar1);
-			this.groupBox1.Controls.Add(this.cmbColuna);
-			this.groupBox1.Controls.Add(this.label6);
-			this.groupBox1.Controls.Add(this.cmbBuscar);
-			this.groupBox1.Controls.Add(this.label5);
-			this.groupBox1.Controls.Add(this.label4);
-			this.groupBox1.Location = new System.Drawing.Point(12, 381);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(642, 67);
-			this.groupBox1.TabIndex = 6;
-			this.groupBox1.TabStop = false;
+			this.grbPesquisa.Controls.Add(this.btnLocalizar);
+			this.grbPesquisa.Controls.Add(this.txtPar2);
+			this.grbPesquisa.Controls.Add(this.label3);
+			this.grbPesquisa.Controls.Add(this.txtPar1);
+			this.grbPesquisa.Controls.Add(this.cmbColuna);
+			this.grbPesquisa.Controls.Add(this.lblPar1);
+			this.grbPesquisa.Controls.Add(this.cmbBuscar);
+			this.grbPesquisa.Controls.Add(this.lblPar2);
+			this.grbPesquisa.Controls.Add(this.label4);
+			this.grbPesquisa.Location = new System.Drawing.Point(12, 381);
+			this.grbPesquisa.Name = "grbPesquisa";
+			this.grbPesquisa.Size = new System.Drawing.Size(754, 67);
+			this.grbPesquisa.TabIndex = 6;
+			this.grbPesquisa.TabStop = false;
+			// 
+			// btnLocalizar
+			// 
+			this.btnLocalizar.Location = new System.Drawing.Point(628, 5);
+			this.btnLocalizar.Name = "btnLocalizar";
+			this.btnLocalizar.Size = new System.Drawing.Size(126, 62);
+			this.btnLocalizar.TabIndex = 22;
+			this.btnLocalizar.Text = "Localizar";
+			this.btnLocalizar.UseVisualStyleBackColor = true;
+			this.btnLocalizar.Click += new System.EventHandler(this.btnLocalizar_Click);
 			// 
 			// txtPar2
 			// 
@@ -329,6 +341,7 @@
 			this.txtPar2.Name = "txtPar2";
 			this.txtPar2.Size = new System.Drawing.Size(100, 20);
 			this.txtPar2.TabIndex = 21;
+			this.txtPar2.Validating += new System.ComponentModel.CancelEventHandler(this.txtPar2_Validating);
 			// 
 			// label3
 			// 
@@ -345,6 +358,7 @@
 			this.txtPar1.Name = "txtPar1";
 			this.txtPar1.Size = new System.Drawing.Size(100, 20);
 			this.txtPar1.TabIndex = 20;
+			this.txtPar1.Validating += new System.ComponentModel.CancelEventHandler(this.txtPar1_Validating);
 			// 
 			// cmbColuna
 			// 
@@ -354,14 +368,14 @@
 			this.cmbColuna.Size = new System.Drawing.Size(140, 21);
 			this.cmbColuna.TabIndex = 14;
 			// 
-			// label6
+			// lblPar1
 			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(366, 16);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(64, 13);
-			this.label6.TabIndex = 19;
-			this.label6.Text = "Parâmetro 1";
+			this.lblPar1.AutoSize = true;
+			this.lblPar1.Location = new System.Drawing.Point(366, 16);
+			this.lblPar1.Name = "lblPar1";
+			this.lblPar1.Size = new System.Drawing.Size(64, 13);
+			this.lblPar1.TabIndex = 19;
+			this.lblPar1.Text = "Parâmetro 1";
 			// 
 			// cmbBuscar
 			// 
@@ -370,15 +384,16 @@
 			this.cmbBuscar.Name = "cmbBuscar";
 			this.cmbBuscar.Size = new System.Drawing.Size(140, 21);
 			this.cmbBuscar.TabIndex = 15;
+			this.cmbBuscar.SelectedIndexChanged += new System.EventHandler(this.cmbBuscar_SelectedIndexChanged);
 			// 
-			// label5
+			// lblPar2
 			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(503, 16);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(64, 13);
-			this.label5.TabIndex = 18;
-			this.label5.Text = "Parâmetro 2";
+			this.lblPar2.AutoSize = true;
+			this.lblPar2.Location = new System.Drawing.Point(503, 16);
+			this.lblPar2.Name = "lblPar2";
+			this.lblPar2.Size = new System.Drawing.Size(64, 13);
+			this.lblPar2.TabIndex = 18;
+			this.lblPar2.Text = "Parâmetro 2";
 			// 
 			// label4
 			// 
@@ -393,29 +408,29 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(670, 460);
-			this.Controls.Add(this.groupBox1);
+			this.ClientSize = new System.Drawing.Size(771, 460);
+			this.Controls.Add(this.grbPesquisa);
 			this.Controls.Add(this.btnFechar);
 			this.Controls.Add(this.btnPesquisar);
-			this.Controls.Add(this.TabControl);
+			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
+			this.Controls.Add(this.lblModo);
 			this.Controls.Add(this.panel1);
 			this.Name = "frmBase";
 			this.Text = "frmBase";
 			this.Load += new System.EventHandler(this.frmBase_Load);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmBase_KeyDown);
 			this.panel1.ResumeLayout(false);
-			this.TabControl.ResumeLayout(false);
+			this.tabControl1.ResumeLayout(false);
 			this.TabPageLista.ResumeLayout(false);
 			this.TabPageLista.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvGrid)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
 			this.bindingNavigator1.ResumeLayout(false);
 			this.bindingNavigator1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.errErro)).EndInit();
+			this.grbPesquisa.ResumeLayout(false);
+			this.grbPesquisa.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -428,9 +443,9 @@
 		private System.Windows.Forms.Button btnExcluir;
 		private System.Windows.Forms.Button btnGravar;
 		private System.Windows.Forms.Button btnIncluir;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label lblModo;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TabControl TabControl;
+		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage TabPageLista;
 		private System.Windows.Forms.DataGridView dgvGrid;
 		private System.Windows.Forms.BindingNavigator bindingNavigator1;
@@ -445,17 +460,18 @@
 		private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
 		private System.Windows.Forms.TabPage tabPageCadastro;
 		private System.Windows.Forms.ToolTip toolTip1;
-		private System.Windows.Forms.ErrorProvider errorProvider1;
+		private System.Windows.Forms.ErrorProvider errErro;
 		private System.Windows.Forms.Button btnFechar;
 		private System.Windows.Forms.Button btnPesquisar;
-		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.GroupBox grbPesquisa;
 		private System.Windows.Forms.TextBox txtPar2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox txtPar1;
 		private System.Windows.Forms.ComboBox cmbColuna;
-		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Label lblPar1;
 		private System.Windows.Forms.ComboBox cmbBuscar;
-		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label lblPar2;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Button btnLocalizar;
 	}
 }
